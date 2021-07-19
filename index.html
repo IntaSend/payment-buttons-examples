@@ -2,6 +2,12 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IntaSend payment buttons integration examples</title>
+    <meta name="description"
+        content="Learn how to quickly integrate IntaSend payment button and start receiving payments in minutes.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -10,10 +16,10 @@
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light top-fixed">
+        <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="img/logo.png" alt="IntaSend Integration Examples">
+                <img src="img/logo.png" width="140px" alt="IntaSend Integration Examples">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -40,6 +46,7 @@
         </div>
     </nav>
 
+
     <div class="container">
         <h1>IntaSend Integration Examples</h1>
         <h2>How to test</h2>
@@ -52,11 +59,8 @@
             <p>Expiry - any future MM/YY</p>
             <p>CVV - 123</p>
         </div>
-    </div>
-
-    <!-- Payment Button -->
-    <div id="payment-button">
-        <div class="container">
+        <!-- Payment Button -->
+        <div id="payment-button">
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <h5>HTML</h5>
@@ -83,11 +87,9 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <div id="custom-buttons">
-        <div class="container">
+        <div id="custom-buttons">
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <h5>HTML</h5>
@@ -123,10 +125,8 @@ document.getElementById(&quot;customBtn&quot;).onclick = () =&gt; {
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="checkout-link">
-        <div class="container">
+        <div id="checkout-link">
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <h5>HTML</h5>
