@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/default.min.css">
+
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">IntaSend Integration Examples</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#payment-button">Payment Button
+                            (simple)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#custom-buttons">Custom Button</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#checkout-link">Express Check-out Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://sandbox.intasend.com">Sandbox and Testing Environment</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Payment Button -->
+    <div id="payment-button">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <h5>HTML</h5>
+                    <pre><code class="language-html">&lt;button class=&quot;btn btn-primary intaSendPayButton&quot;&gt;Pay Now&lt;/button&gt;</code></pre>
+                    <h5>JavaScript</h5>
+                    <pre>
+<code class="language-javascript">new window.IntaSend({
+    publicAPIKey: &quot;YOUR-PUBLISHABLE-KEY&quot;,
+    live: false // set to true when going live
+})
+.on(&quot;COMPLETE&quot;, () =&gt; alert(&quot;Do something on success&quot;))
+.on(&quot;FAILED&quot;, () =&gt; alert(&quot;Do something on failure&quot;))
+.on(&quot;IN-PROGRESS&quot;, () =&gt; console.log(&quot;Payment in progress status&quot;))
+</code>
+                </pre>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div>
+                        You can simply add a pay now button to your site with a few lines of code.
+                    </div>
+                    <div>
+                        <p>Use the following cards to test pay action.</p>
+                        <p>4000 0000 0000 0002</p>
+                        <p>4242 4242 4242 4242</p>
+                        <p>Expiry - any future MM/YY</p>
+                        <p>CVV - 123</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary btn-lg intaSendPayButton">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="custom-buttons">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <h5>HTML</h5>
+                    <pre><code class="language-html">&lt;button class=&quot;btn btn-primary btn-lg&quot; id=&quot;customBtn&quot;&gt;Pay USD 10&lt;/button&gt;</code></pre>
+                    <h5>JavaScript</h5>
+                    <pre>
+<code class="language-javascript">let customBtnObj = new window.IntaSend({
+    publicAPIKey: &quot;YOUR-PUBLISHABLE-KEY&quot;,
+    live: false // set to true when going live
+})
+document.getElementById(&quot;customBtn&quot;).onclick = () =&gt; {
+    customBtnObj.run({
+        amount: 10,
+        currency: &quot;USD&quot;,
+        email: &quot;john@doe.com&quot;,
+        first_name: &quot;John&quot;,
+        last_name: &quot;Doe&quot;,
+        country: &quot;US&quot;
+    })
+    .on(&quot;COMPLETE&quot;, () =&gt; alert(&quot;Do something on success&quot;))
+    .on(&quot;FAILED&quot;, () =&gt; alert(&quot;Do something on failure&quot;))
+    .on(&quot;IN-PROGRESS&quot;, () =&gt; console.log(&quot;Payment in progress status&quot;))
+}</code>
+                </pre>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div>
+                        Parse extra parameters e.g customer email, amount etc after initialization.
+                    </div>
+                    <div>
+                        <p>Use the following cards to test pay action.</p>
+                        <p>4000 0000 0000 0002</p>
+                        <p>4242 4242 4242 4242</p>
+                        <p>Expiry - any future MM/YY</p>
+                        <p>CVV - 123</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary btn-lg" id="customBtn">Pay USD 10</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-link">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <h5>HTML</h5>
+                    <pre><code class="language-html">&lt;button class=&quot;btn btn-primary btn-lg&quot; id=&quot;customBtn&quot;&gt;Pay USD 10&lt;/button&gt;</code></pre>
+                    <h5>JavaScript</h5>
+                    <pre>
+                    </pre>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <button class="btn btn-primary btn-lg" onclick="generateLink()">Generate and open check out link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://unpkg.com/intasend-inlinejs-sdk@3.0.2/build/intasend-inline.js"></script>
+    <script>
+        // Simple button implementation
+        new window.IntaSend({
+                publicAPIKey: "ISPubKey_test_91ffc81a-8ac4-419e-8008-7091caa8d73f",
+                live: false // set to true when going live
+            })
+            .on("COMPLETE", () => alert("Do something on success"))
+            .on("FAILED", () => alert("Do something on failure"))
+            .on("IN-PROGRESS", () => console.log("Payment in progress status"))
+
+        // Custom button implementation
+        let customBtnObj = new window.IntaSend({
+            publicAPIKey: "ISPubKey_test_91ffc81a-8ac4-419e-8008-7091caa8d73f",
+            live: false // set to true when going live
+        })
+        document.getElementById("customBtn").onclick = () => {
+            customBtnObj.run({
+                    amount: 10,
+                    currency: "USD",
+                    email: "john@doe.com",
+                    first_name: "John",
+                    last_name: "Doe",
+                    country: "US"
+                })
+                .on("COMPLETE", () => alert("Do something on success"))
+                .on("FAILED", () => alert("Do something on failure"))
+                .on("IN-PROGRESS", () => console.log("Payment in progress status"))
+        }
+
+        // Express link
+        function generateLink() {
+            let url = "https://sandbox.intasend.com/api/v1/checkout/"
+            let payload = {
+                public_key: "ISPubKey_test_91ffc81a-8ac4-419e-8008-7091caa8d73f",
+                amount: 10,
+                currency: "KES",
+                email: "john@doe.com",
+                first_name: "John",
+                last_name: "Doe",
+                country: "US"
+            }
+            axios.post(url, payload).then((resp) => {
+                if (resp.data.url) {
+                    window.open(resp.data.url, '_blank').focus();
+                }
+            }).catch((err) => alert("Problem experienced while initializing your request: " + err))
+        }
+    </script>
+
+    <!-- Extra - Code higlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+</body>
+
+</html>
