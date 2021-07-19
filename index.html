@@ -33,6 +33,12 @@
             margin-bottom: 21px;
             font-size: 1.4em;
         }
+
+        h5 {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 11px;
+        }
     </style>
 </head>
 
@@ -95,11 +101,11 @@
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <h2>Payment Button - Standard</h2>
-                    <h5>Install Plugin</h5>
+                    <h5>Install Plugin - Add it in your before closing the <code>head</code> tag</h5>
                     <pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/intasend-inlinejs-sdk@3.0.2/build/intasend-inline.js&quot;&gt;&lt;/script&gt;</code></pre>
-                    <h5>HTML</h5>
+                    <h5>Add button tag in your <code>body</code></h5>
                     <pre><code class="language-html">&lt;button class=&quot;btn btn-primary btn-lg intaSendPayButton&quot; data-amount=&quot;10&quot; data-currency=&quot;KES&quot;&gt;Pay Now&lt;/button&gt;</code></pre>
-                    <h5>JavaScript</h5>
+                    <h5>Add JavaScript code before closing the <code>body</code> tag</h5>
                     <pre>
 <code class="language-javascript">new window.IntaSend({
     publicAPIKey: &quot;YOUR-PUBLISHABLE-KEY&quot;,
@@ -116,7 +122,8 @@
                         Simply add a pay now button to your site with a few lines of code.
                     </div>
                     <div>
-                        <button class="btn btn-primary btn-lg intaSendPayButton" data-amount="10" data-currency="KES">Pay Now</button>
+                        <button class="btn btn-primary btn-lg intaSendPayButton" data-amount="10"
+                            data-currency="KES">Pay Now</button>
                     </div>
                 </div>
             </div>
@@ -127,9 +134,11 @@
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <h2>Payment Button - Custom</h2>
-                    <h5>HTML</h5>
+                    <h5>Install Plugin - Add it in your before closing the <code>head</code> tag</h5>
+                    <pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/intasend-inlinejs-sdk@3.0.2/build/intasend-inline.js&quot;&gt;&lt;/script&gt;</code></pre>
+                    <h5>Add button tag in your <code>body</code></h5>
                     <pre><code class="language-html">&lt;button class=&quot;btn btn-primary btn-lg&quot; id=&quot;customBtn&quot;&gt;Pay USD 10&lt;/button&gt;</code></pre>
-                    <h5>JavaScript</h5>
+                    <h5>Add JavaScript code before closing the <code>body</code> tag</h5>
                     <pre>
 <code class="language-javascript">let customBtnObj = new window.IntaSend({
     publicAPIKey: &quot;YOUR-PUBLISHABLE-KEY&quot;,
@@ -165,10 +174,33 @@ document.getElementById(&quot;customBtn&quot;).onclick = () =&gt; {
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <h2>Express check-out link</h2>
-                    <h5>HTML</h5>
+                    <h5>Install Axios for post request</h5>
+                    <pre><code class="language-html">&lt;!-- This example use Axios to send post request. Feel free to use any other plugin that works for you --&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+                    <h5>Add button tag in your <code>body</code></h5>
                     <pre><code class="language-html">&lt;button class=&quot;btn btn-primary btn-lg&quot; id=&quot;customBtn&quot;&gt;Pay USD 10&lt;/button&gt;</code></pre>
-                    <h5>JavaScript</h5>
+                    <h5>Add JavaScript code before closing the <code>body</code> tag</h5>
                     <pre>
+<code class="language-javascript">
+function generateLink() {
+    // Use https://payment.intasend.com/api/v1/checkout/ for live payments
+    let url = &quot;https://sandbox.intasend.com/api/v1/checkout/&quot;
+    let payload = {
+        public_key: &quot;ISPubKey_test_91ffc81a-8ac4-419e-8008-7091caa8d73f&quot;,
+        amount: 10,
+        currency: &quot;KES&quot;,
+        email: &quot;john@doe.com&quot;,
+        first_name: &quot;John&quot;,
+        last_name: &quot;Doe&quot;,
+        country: &quot;US&quot;
+    }
+    axios.post(url, payload).then((resp) =&gt; {
+        if (resp.data.url) {
+            window.open(resp.data.url, '_blank').focus();
+        }
+    }).catch((err) =&gt; alert(&quot;Problem experienced while initializing your request: &quot; + err))
+}
+</code>
                     </pre>
                 </div>
                 <div class="col-12 col-lg-6 vcontent text-center">
@@ -184,6 +216,7 @@ document.getElementById(&quot;customBtn&quot;).onclick = () =&gt; {
         </div>
     </div>
 
+    <!-- This example use Axios to send post request. Feel free to use any other plugin that works for you -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="https://unpkg.com/intasend-inlinejs-sdk@3.0.2/build/intasend-inline.js"></script>
     <script>
@@ -217,6 +250,7 @@ document.getElementById(&quot;customBtn&quot;).onclick = () =&gt; {
 
         // Express link
         function generateLink() {
+            // Use https://payment.intasend.com/api/v1/checkout/ for live payments
             let url = "https://sandbox.intasend.com/api/v1/checkout/"
             let payload = {
                 public_key: "ISPubKey_test_91ffc81a-8ac4-419e-8008-7091caa8d73f",
