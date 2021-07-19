@@ -111,7 +111,7 @@
                     <h5>Add JavaScript code before closing the <code>body</code> tag</h5>
                     <pre>
 <code class="language-javascript">new window.IntaSend({
-    publicAPIKey: &quot;YOUR-PUBLISHABLE-KEY&quot;,
+    publicAPIKey: &quot;REPLACE-WITH-YOUR-PUBLISHABLE-KEY&quot;,
     live: false // set to true when going live
 })
 .on(&quot;COMPLETE&quot;, () =&gt; alert(&quot;Do something on success&quot;))
@@ -144,7 +144,7 @@
                     <h5>Add JavaScript code before closing the <code>body</code> tag</h5>
                     <pre>
 <code class="language-javascript">let customBtnObj = new window.IntaSend({
-    publicAPIKey: &quot;YOUR-PUBLISHABLE-KEY&quot;,
+    publicAPIKey: &quot;REPLACE-WITH-YOUR-PUBLISHABLE-KEY&quot;,
     live: false // set to true when going live
 })
 document.getElementById(&quot;customBtn&quot;).onclick = () =&gt; {
@@ -189,7 +189,7 @@ function generateLink() {
     // Use https://payment.intasend.com/api/v1/checkout/ for live payments
     let url = &quot;https://sandbox.intasend.com/api/v1/checkout/&quot;
     let payload = {
-        public_key: &quot;YOUR-PUBLISHABLE-KEY&quot;,
+        public_key: &quot;REPLACE-WITH-YOUR-PUBLISHABLE-KEY&quot;,
         amount: 10,
         currency: &quot;KES&quot;,
         email: &quot;john@doe.com&quot;,
