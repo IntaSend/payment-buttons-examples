@@ -12,7 +12,9 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">IntaSend Integration Examples</a>
+            <a class="navbar-brand" href="/">
+                <img src="img/logo.png" alt="IntaSend Integration Examples">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -38,6 +40,19 @@
         </div>
     </nav>
 
+    <div class="container">
+        <h1>IntaSend Integration Examples</h1>
+        <h2>How to test</h2>
+        <p>Click on the buttons i.e in the examples and prompted to pay, use the following test cards to complete your
+            test payment.</p>
+        <div>
+            <h4>Test cards</h4>
+            <p>Card 1: 4000 0000 0000 0002</p>
+            <p>Card 2: 4242 4242 4242 4242</p>
+            <p>Expiry - any future MM/YY</p>
+            <p>CVV - 123</p>
+        </div>
+    </div>
 
     <!-- Payment Button -->
     <div id="payment-button">
@@ -61,13 +76,6 @@
                 <div class="col-12 col-lg-6">
                     <div>
                         You can simply add a pay now button to your site with a few lines of code.
-                    </div>
-                    <div>
-                        <p>Use the following cards to test pay action.</p>
-                        <p>4000 0000 0000 0002</p>
-                        <p>4242 4242 4242 4242</p>
-                        <p>Expiry - any future MM/YY</p>
-                        <p>CVV - 123</p>
                     </div>
                     <div>
                         <button class="btn btn-primary btn-lg intaSendPayButton">Pay Now</button>
@@ -110,13 +118,6 @@ document.getElementById(&quot;customBtn&quot;).onclick = () =&gt; {
                         Parse extra parameters e.g customer email, amount etc after initialization.
                     </div>
                     <div>
-                        <p>Use the following cards to test pay action.</p>
-                        <p>4000 0000 0000 0002</p>
-                        <p>4242 4242 4242 4242</p>
-                        <p>Expiry - any future MM/YY</p>
-                        <p>CVV - 123</p>
-                    </div>
-                    <div>
                         <button class="btn btn-primary btn-lg" id="customBtn">Pay USD 10</button>
                     </div>
                 </div>
@@ -135,7 +136,8 @@ document.getElementById(&quot;customBtn&quot;).onclick = () =&gt; {
                     </pre>
                 </div>
                 <div class="col-12 col-lg-6">
-                    <button class="btn btn-primary btn-lg" onclick="generateLink()">Generate and open check out link</button>
+                    <button class="btn btn-primary btn-lg" onclick="generateLink()">Generate and open check out
+                        link</button>
                 </div>
             </div>
         </div>
